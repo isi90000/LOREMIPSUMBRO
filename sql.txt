@@ -1,0 +1,102 @@
+create table workers(
+id number,
+fname varchar(60),
+lname varchar(60),
+birthday date,
+role varchar(20),
+starting_time date,
+salary number
+
+);
+desc workers
+select * from workers
+select fname || lname as fullname from workers
+select fname || lname as fullname,birthday,role,starting_time,salary from workers
+insert into workers(fname,lname,birthday,role,starting_time,salary) values('Ismayil','Ismayilli',to_date('08-12-2002','dd-mm-yyyy'),'Director',to_date('08-05-2022','dd-mm-yyyy'),5000)
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('Sona','Agayeva',to_date('09-11-2002','dd-mm-yyyy'),'Staff',to_date('08-05-2022','dd-mm-yyyy'),350);
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('Kerim','Lutfiyev',to_date('11-12-1999','dd-mm-yyyy'),'DB dev',to_date('08-06-2022','dd-mm-yyyy'),2000);
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('Faxri','Mustafayev',to_date('04-06-2002','dd-mm-yyyy'),'Stajyor',to_date('08-06-2022','dd-mm-yyyy'),200);
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('Rashad','Babayev',to_date('08-09-2002','dd-mm-yy'),'Staff',to_date('08005-2022','dd-mm-yyyy'),350);
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('Khumar','Mirzayeva',to_date('20-01-2003','dd-mm-yyyy'),'Director',to_date('08-05-2022','dd-mm-yyyy'),5000);
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('Banu','Ismayilli',to_date('09-12-2004','dd-mm-yyyy'),'Director',to_date('08-07-2022','dd-mm-yyyy'),5000);
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('Shabnam','Ismayilli',to_date('27-05-1999','dd-mm-yyyy'),'Director',to_date('08-07-2022','dd-mm-yyyy'),5000);
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('Roya','Xiziyeva',to_date('22-09-2003','dd-mm-yyyy'),'Stajyor',to_date('09-08-2022','dd-mm-yyyy'),200);
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('Mehriban','Mirzeyeva',to_date('08-12-2003','dd-mm-yyyy'),'Operator',to_date('08-05-2022','dd-mm-yyyy'),500);
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('Niftali','Eliyev',to_date('11-11-2003','dd-mm-yyyy'),'Operator',to_date('08-06-2022','dd-mm-yyyy'),500);
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('Murad','Eliyev',to_date('08-12-2003','dd-mm-yyyy'),'Operator',to_date('08-05-2022','dd-mm-yyyy'),500);
+INSERT INTO workers(fname,lname,birthday,role,starting_time,salary) values('XANLAR','Eliyev',to_date('08-12-2003','dd-mm-yyyy'),'Operator',to_date('08-05-2022','dd-mm-yyyy'),500);
+  
+  /* Alter table isledmeleri */
+  alter table workers rename to workers_info;
+  alter table workers_info rename to workers;
+  /*column alter*/
+  alter table workers rename column fname to name;
+  alter table workers rename column name to fname;
+  /* add column*/
+  alter table workers add hr_fullname varchar(120);
+Update workers set hr_fullname='Rauf Balayev';
+  alter table workers add office varchar(120);
+Update workers set office='Neriman Nerimanov mts Nazim Hikmet kuc.';
+alter table workers add Age number;
+/* column modify data type */
+alter table workers modify office varchar(150);
+alter table workers modify hr_fullname varchar(40);
+alter table workers modify role varchar(50);
+alter table workers modify salary number(7,6);
+alter table workers modify fname varchar(30);
+
+/* delete column */
+alter table workers drop column fname;
+alter table workers drop column lname;
+alter table workers drop column birthday;
+alter table workers drop column role;
+alter table workers drop column starting_date;
+alter table workers drop column fname;
+alter table workers drop column salary;
+alter table workers drop column Age;
+alter table workers drop column office;
+alter table workers drop column hr_fullname;
+/*DROP TABLE*/
+drop table workers;
+/* ROLLBACK TABLE*/
+flashback table workers to before drop;
+
+select fname,lname,to_char(birthday,'dd-mm-yyyy') as birthday, role,to_char(starting_time,'dd-mm-yyyy') as startingtime,salary from workers
+
+create table orders(
+order_title nchar(150),
+order_description nchar(300),
+order_price number
+);
+
+desc orders
+select * from orders
+select order_title,order_description,order_price from orders
+
+insert into orders(order_title,order_description,order_price) values('Humidifier','AIR DIFFUSER THE BEST',50);
+insert into orders(order_title,order_description,order_price) values('ELEKTRIK SUPURGESI','Lorem Ipsum :)',150);
+insert into orders(order_title,order_description,order_price) values('Lorem Ipsum','Lorem Ipsum Lorem Ipsum',50);
+
+alter table orders rename to orders_info;
+alter table orders_info rename to orders;
+  /*column alter*/
+  alter table order rename column order_title to o_name;
+  alter table orders rename column o_name to order_title;
+  /* add column*/
+
+  alter table orders add hr_fullname varchar(120);
+Update orders set hr_fullname='Rauf Balayev';
+  alter table orders add office varchar(120);
+Update orders set office='Neriman Nerimanov mts Nazim Hikmet kuc.';
+/* column modify data type */
+
+alter table orders modify order_title varchar(150);
+alter table orders modify hr_fullname varchar(40);
+alter table orders modify order_description varchar(30);
+ /* delete column */
+alter table orders drop column order_title;
+alter table orders drop column order_description 
+alter table orders drop column hr_fullname 
+alter table orders drop column order_price
+drop table orders
+flashback table orders
