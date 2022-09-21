@@ -1,0 +1,91 @@
+/* outline */
+create table workers(
+worker_id int,
+fname varchar2(30) NOT NULL,
+lname varchar2(30) NOT NULL,
+mail varchar2(50),
+phone number,
+constraint pk_worker_id PRIMARY KEY(worker_id),
+constraint u_mail UNIQUE(mail),
+constraint u_phone UNIQUE(phone)
+);
+select * from user_constraints where table_name='WORKERS'
+alter table workers modify (mail NOT NULL)
+alter table workers modify (phone NOT NULL)
+/*drop not null*/
+alter table workers modify (mail NULL)
+alter table workers modify (phone NULL)
+
+alter table workers add age number;
+alter table workers ADD constraint age_check CHECK(age>18)
+
+insert into workers values(1,'ismayil','ismayilli','asd@gmail.com',05015015,17) 
+/*it will get error because we added check constraint who are adult 18+*/
+insert into workers values(1,'ismayil','ismayilli','asd@gmail.com',05015015,18) 
+/*it will get succes*/
+
+/*disable constraint unique*/
+alter table workers disable constraint u_mail
+alter table workers disable constraint u_phone
+
+/*enable constraint */
+alter table workers enable constraint u_mail
+alter table workers enable constraint u_phone
+/*drop constraint */
+alter table workers drop constraint u_mail
+alter table workers drop constraint u_phone
+/*drop primary key constraint*/
+alter table workers drop constraint pk_worker_id
+/*disable primary key const*/
+alter table workers disable constraint pk_worker_id
+/*enablepk */
+alter table workers enable constraint pk_worker_id
+
+/*add primary key*/
+alter table workers add constraint pk_worker_id Primary Key(worker_id)
+
+/* inline */
+create table workers(
+worker_id int PRIMARY KEY,
+fname varchar2(30) NOT NULL,
+lname varchar2(30) NOT NULL,
+mail varchar2(50) UNIQUE,
+phone number UNIQUE,
+age number CHECK(age>18)
+
+);
+select * from user_constraints where table_name='WORKERS'
+alter table workers rename constraint SYS_C008331 to pk_worker_id
+alter table workers rename constraint SYS_C008332 to u_mail
+alter table workers rename constraint SYS_C008333 to u_phone
+
+/*drop not null*/
+alter table workers modify (mail NULL)
+alter table workers modify (phone NULL)
+/*drop not null*/
+alter table workers modify (mail NULL)
+alter table workers modify (phone NULL)
+
+/*disable constraint unique*/
+alter table workers disable constraint u_mail
+alter table workers disable constraint u_phone
+
+/*enable constraint */
+alter table workers enable constraint u_mail
+alter table workers enable constraint u_phone
+/*drop constraint */
+alter table workers drop constraint u_mail
+alter table workers drop constraint u_phone
+/*drop primary key constraint*/
+alter table workers drop constraint pk_worker_id
+/*disable primary key const*/
+alter table workers disable constraint pk_worker_id
+/*enablepk */
+alter table workers enable constraint pk_worker_id
+
+/*add primary key*/
+alter table workers add constraint pk_worker_id Primary Key(worker_id)
+insert into workers values(1,'ismayil','ismayilli','asd@gmail.com',05015015,17) 
+/*it will get error because we added check constraint who are adult 18+*/
+insert into workers values(1,'ismayil','ismayilli','asd@gmail.com',05015015,18) 
+/*it will get succes*/
