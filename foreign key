@@ -1,0 +1,54 @@
+/* Kitabxana qurmaq istedim :) 
+adnsu kitabxanasi :/ */
+create table student(
+student_id int,
+fname varchar(20) NOT NULL,
+lname varchar(20)NOT NULL,
+stud_mail varchar(50),
+stud_pass varchar(30) NOT NULL,
+CONSTRAINT un_mail UNIQUE(stud_mail),
+constraint pk_stud_id PRIMARY KEY(student_id)
+);
+select *from student
+insert into student values(1,'Ismayil','Ismayilli','i.ismayil@asoiu.edu.az','123456')
+insert into student values(2,'Ismayil','Ismayilli','i.ismayil3@asoiu.edu.az','123456')
+insert into student values(3,'Ismayil','Ismayilli','i.ismayil2@asoiu.edu.az','123456')
+insert into student values(4,'Ismayil','Ismayilli','i.ismayil1@asoiu.edu.az','123456')
+
+create table Book_status(
+status_id int PRIMARY KEY,
+status_name varchar(20)
+);
+insert into book_status values(1,'have book in library')
+insert into book_status values(2,'not book in library')
+
+create table book(
+book_id int,
+book_name varchar(50),
+author varchar(20) NOT NULL,
+status_id int,
+constraint fk_stat_id FOREIGN KEY(status_id) REFERENCES Book_status(status_id)on delete cascade,/*iksinden biri */
+constraint fk_stat_id FOREIGN KEY(status_id) REFERENCES Book_status(status_id)on delete set null,/*iksinden biri */
+constraint un_book_name UNIQUE(book_name),
+constraint pk_bookid PRIMARY KEY(book_id)
+);
+insert into book values(1,'CIRTDAN NAGILI','NAMELUM',1)
+insert into book values(2,'NESREDDIN NAGILI','NAMELUM',1)
+insert into book values(3,'TEPEGOZ NAGILI','NAMELUM',1)
+select * from book
+create table borrow(
+borrow_id int PRIMARY KEY,
+book_id int,
+student_id int,
+date_borrow date NOT NULL,
+date_return date,
+constraint fk_book_id FOREIGN KEY(book_id) REFERENCES book(book_id) on delete cascade,
+constraint fk_book_id FOREIGN KEY(book_id) REFERENCES book(book_id) on delete set null,/*iksinden biri */
+constraint fk_student_id foreign key (student_id) REFERENCES student(student_id) on delete cascade,
+constraint fk_student_id foreign key (student_id) REFERENCES student(student_id) on delete set null /*iksinden biri */
+
+);
+delete from book
+delete from student
+delete from status
+/*bunlari silende null yazacaq*
