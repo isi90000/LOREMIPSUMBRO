@@ -89,3 +89,12 @@ insert into workers values(1,'ismayil','ismayilli','asd@gmail.com',05015015,17)
 /*it will get error because we added check constraint who are adult 18+*/
 insert into workers values(1,'ismayil','ismayilli','asd@gmail.com',05015015,18) 
 /*it will get succes*/
+create table workers(
+worker_id int PRIMARY KEY,
+fname varchar2(30) NOT NULL,
+lname varchar2(30) NOT NULL,
+mail varchar2(50),
+phone number,
+age number CHECK(age>18),
+CONSTRAINT u_mail UNIQUE(mail,phone)
+);
