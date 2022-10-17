@@ -1,0 +1,3 @@
+Select next_day(to_date('01-oct-2022','dd-mon-yy')-1,'monday')+7*(level-1)
+from dual 
+connect by level<= (to_date('31-oct-2022','dd-mon-yy') - to_date('01-oct-2022','dd-mon-yy')+7)/7
