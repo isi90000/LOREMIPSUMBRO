@@ -1,0 +1,4 @@
+Delete from loan from where first_name='Leive';
+
+
+Truncate loan /* all data will delete */
