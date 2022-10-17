@@ -1,0 +1,18 @@
+create table test3(
+test_ad char (10)
+);
+
+insert into test3 values ('A');
+insert into test3 values ('A');
+insert into test3 values ('A');
+insert into test3 values ('B');
+insert into test3 values ('B');
+insert into test3 values ('B');
+insert into test3 values ('B');
+insert into test3 values ('C');
+insert into test3 values ('C');
+insert into test3 values ('C');
+insert into test3 values ('C');
+insert into test3 values ('C');
+select test_ad, rank() over (order by test_ad) as rank from test3;
+select test_ad, dense_rank() over (order by test_ad) as denserank from test3;
