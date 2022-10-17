@@ -1,0 +1,1 @@
+Select to_date('20-01-2022', 'dd-mm-yyyy') + level from dual connect by level < to_date('08-12-2022', 'dd-mm-yyyy') - to_date('20-01-2022', 'dd-mm-yyyy') 
