@@ -1,0 +1,5 @@
+select last_day('01-jan-2022')from dual;
+
+select last_day('01-jan-2022') connect by level<12 from dual;
+
+ SELECT  (ADD_MONTHS(LAST_DAY('01-jan-2022'),level)) FROM dual connect by level <12 ;
