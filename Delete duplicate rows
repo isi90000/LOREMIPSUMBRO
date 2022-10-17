@@ -1,0 +1,1 @@
+Delete from lon where rowid not in(Select max(rowid) from loan)
